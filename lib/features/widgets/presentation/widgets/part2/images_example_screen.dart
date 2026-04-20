@@ -24,7 +24,7 @@ class ImageExampleScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Image.asset(
-                'assets/images/star.png',
+                'assets/images/rating.png',
                 width: 200,
                 height: 200,
                 fit: BoxFit.contain,

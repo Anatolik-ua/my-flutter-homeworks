@@ -46,7 +46,10 @@ class _WidgetTypesExampleScreenState extends State<WidgetTypesExampleScreen> {
               ),
             ),
             SizedBox(height: 16),
-            StatefulExampleWidget(),
+            StatefulExampleWidget(
+              title: 'Counter',
+              message: 'This is a stateful widget!',
+            ),
           ],
         ),
       ),
@@ -67,6 +70,10 @@ class StatelessExampleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // MediaQuery.sizeOf(context);
+    // Theme.of(context);
+    // Localizations.localeOf(context);
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -95,8 +102,12 @@ class StatelessExampleWidget extends StatelessWidget {
 // Stateful Widget Example
 class StatefulExampleWidget extends StatefulWidget {
   const StatefulExampleWidget({
+    required this.title,
+    required this.message,
     super.key,
   });
+  final String title;
+  final String message;
 
   @override
   State<StatefulExampleWidget> createState() => _StatefulExampleWidgetState();
@@ -104,6 +115,16 @@ class StatefulExampleWidget extends StatefulWidget {
 
 class _StatefulExampleWidgetState extends State<StatefulExampleWidget> {
   int _counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    _counter = 0;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   void _incrementCounter() {
     setState(() {

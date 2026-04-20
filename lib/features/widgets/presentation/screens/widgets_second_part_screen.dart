@@ -27,7 +27,7 @@ class WidgetsSecondPartScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute<Widget>(
-                builder: (context) => const CustomWidgetsExampleScreen(),
+                builder: (context) => CustomWidgetsExampleScreen(),
               ),
             ),
           ),

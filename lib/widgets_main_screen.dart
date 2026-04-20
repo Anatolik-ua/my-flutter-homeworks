@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/features/widgets/presentation/screens/widgets_first_part_screen.dart';
 import 'package:flutter_lab/features/widgets/presentation/screens/widgets_second_part_screen.dart';
+import 'package:flutter_lab/lesson_11/lesson_11.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -25,10 +25,11 @@ class WidgetsScreen extends StatelessWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetsFirstPartScreen(),
+                  builder: (context) => const LessonEleven(),
                 ),
               ),
             ),
+
             NavigationCard(
               title: 'Widgets Part 2',
               description:

@@ -12,6 +12,9 @@ class _TextFieldExampleScreenState extends State<TextFieldExampleScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
+
+  final _textController = TextEditingController(text: 'Hello');
+
   bool _obscurePassword = true;
 
   @override
@@ -55,6 +58,8 @@ class _TextFieldExampleScreenState extends State<TextFieldExampleScreen> {
                   const Text('Basic TextField'),
                   const SizedBox(height: 8),
                   TextField(
+                    controller: _textController,
+
                     decoration: InputDecoration(
                       labelText: 'Enter text',
                       border: OutlineInputBorder(
