@@ -1,16 +1,15 @@
-# flutter_lab
+# Flutter Homework Repository
 
-A new Flutter project.
+This repository contains homework assignments and practice projects completed during my Flutter development training.
 
-## Getting Started
+## About Me
+**Name:** Anatoliy Kaminskiy
+**Role:** Data Analyst & Aspiring Flutter Developer
 
-This project is a starting point for a Flutter application.
+## Project Structure
+The repository is organized by lessons and topics:
+* **Flutter UI:** Widgets, Layouts, and Styling (Current focus).
+* **tbd** ...
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+*Developed as part of the Flutter Course at Robot Dreams.*
