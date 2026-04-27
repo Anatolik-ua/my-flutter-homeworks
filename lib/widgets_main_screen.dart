@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/features/widgets/presentation/screens/widgets_second_part_screen.dart';
-import 'package:flutter_lab/lesson_11/lesson_11.dart';
+import 'package:flutter_lab/lesson_11/homework_11_screen.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -18,28 +17,12 @@ class WidgetsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             NavigationCard(
-              title: 'Widgets Part 1',
-              description:
-                  'Container, SizedBox, Padding, Align, Center, Text, Row, '
-                  'Column, Expanded, Buttons, Scroll',
+              title: 'Homework 11',
+              description: 'Віджети. Частина 1',
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
-                  builder: (context) => const LessonEleven(),
-                ),
-              ),
-            ),
-
-            NavigationCard(
-              title: 'Widgets Part 2',
-              description:
-                  'Custom Widgets, Stateless vs Stateful Widgets, '
-                  'Gesture Detector & InkWel, '
-                  'TextFields & TextFormFields',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetsSecondPartScreen(),
+                  builder: (context) => const HomeworkElevenScreen(),
                 ),
               ),
             ),
