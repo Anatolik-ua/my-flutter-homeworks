@@ -18,6 +18,39 @@ class HomeworkElevenScreen extends StatelessWidget {
             color: const Color(0xFF096EEA),
             borderRadius: BorderRadius.circular(16),
           ),
+          child: const Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Color(0xFFFFFD71),
+                    size: 20,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'Привіт, Flutter!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Inter',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Icon(
+                    Icons.star,
+                    color: Color(0xFFFFFD71),
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
