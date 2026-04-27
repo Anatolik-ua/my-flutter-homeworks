@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/lesson_11/homework_11_interactive_screen.dart';
 import 'package:flutter_lab/lesson_11/homework_11_screen.dart';
 
 class WidgetsScreen extends StatelessWidget {
@@ -23,6 +24,16 @@ class WidgetsScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute<Widget>(
                   builder: (context) => const HomeworkElevenScreen(),
+                ),
+              ),
+            ),
+            NavigationCard(
+              title: 'Homework 11 - Interactive',
+              description: 'Виніс окремо subtas 5 для інтерактивного завдання',
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (context) => const HomeworkElevenInteractiveScreen(),
                 ),
               ),
             ),
