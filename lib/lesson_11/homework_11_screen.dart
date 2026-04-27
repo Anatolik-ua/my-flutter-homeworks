@@ -15,34 +15,36 @@ class HomeworkElevenScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // ПЕРШИЙ КОНТЕЙНЕР (Синій)
-            Container(
-              width: 300,
-              height: 150,
-              decoration: BoxDecoration(
-                color: const Color(0xFF096EEA),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.star, color: Color(0xFFFFFD71), size: 20),
-                      SizedBox(width: 10),
-                      Text(
-                        'Привіт, Flutter!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Inter',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
+            Expanded(
+              child: Container(
+                width: 300,
+                height: 150,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF096EEA),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.star, color: Color(0xFFFFFD71), size: 20),
+                        SizedBox(width: 10),
+                        Text(
+                          'Привіт, Flutter!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Inter',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      Icon(Icons.star, color: Color(0xFFFFFD71), size: 20),
-                    ],
+                        SizedBox(width: 10),
+                        Icon(Icons.star, color: Color(0xFFFFFD71), size: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -58,7 +60,7 @@ class HomeworkElevenScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: const Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Row(
