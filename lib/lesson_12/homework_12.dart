@@ -95,7 +95,44 @@ class HomeworkTwelveScreen extends StatelessWidget {
             const SizedBox(height: 10),
             const AssessmentCategoryCard(title: 'Лавка традицій'),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 26),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Є що додати?',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF13131E),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Поділіться загальним враженням',
+                      hintStyle: const TextStyle(color: Color(0xFF878789)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Color(0xFFC9CACA)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Color(0xFFC9CACA)),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 36),
           ],
         ),
       ),
@@ -141,7 +178,6 @@ class AssessmentCategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      //margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
