@@ -3,7 +3,6 @@ import 'package:flutter_lab/lesson_11/homework_11_interactive_screen.dart';
 import 'package:flutter_lab/lesson_11/homework_11_screen.dart';
 import 'package:flutter_lab/lesson_12/homework_12.dart';
 
-
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
 
