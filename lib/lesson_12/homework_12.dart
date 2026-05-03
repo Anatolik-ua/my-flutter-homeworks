@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeworkTwelveScreen extends StatelessWidget {
   const HomeworkTwelveScreen({super.key});
@@ -8,30 +9,92 @@ class HomeworkTwelveScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFEEF2FC),
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          color: Color(0xFF5E5F61),
+        leading: Padding(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 8,
+            top: 16,
+            bottom: 16,
+          ),
+          child: SvgPicture.asset('assets/images/leading-icon.svg'),
         ),
         title: const Text(
           'Оцінка візиту до магазину',
           style: TextStyle(
-            color: Colors.black,
+            color: Color(0xFF202124),
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
         ),
         centerTitle: false,
-        titleSpacing: 8.0,
+        titleSpacing: 0.0,
         backgroundColor: Colors.white,
         elevation: 0,
         actions: const [SizedBox(width: 16)],
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            // Тут буде все інше (зірки, картки ...)
-            Text('Тут буде основний контент'),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(24),
+                  bottomRight: Radius.circular(24),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 1),
+                    blurRadius: 0,
+                    spreadRadius: 0,
+                    color: Colors.black.withValues(alpha: 0.06),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(5, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: SvgPicture.asset(
+                        index < 4
+                            ? 'assets/images/Rating_active.svg'
+                            : 'assets/images/Rating_inactive.svg',
+                        width: 44,
+                        height: 44,
+                      ),
+                    );
+                  }),
+                ),
+              ),
+            ),
+
+            // const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  SizedBox(height: 16),
+                  Text(
+                    'Яку оціночку поставите відділам?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF1D1E20),
+                    ),
+                  ),
+                  SizedBox(height: 24),
+
+                  Text('Тут буде основний контент'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
