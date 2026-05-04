@@ -446,7 +446,11 @@ class TrainingExample15 extends StatelessWidget {
 // Тут просто розберіться - чому не застосовуються constraints ConstrainedBox?
 
 // Запишіть відповідь у коментарі до коду нижче
-// Відповідь: ConstrainedBox не застосовуються, тому що ...
+// Відповідь: ConstrainedBox не застосовуються, тому що SizedBox передає
+// жорсткі обмеження 100x100. У Flutter обмеження батька мають вищий
+// пріоритет, тому дитина не може вийти за межі встановленого батьком
+// розміру, навіть якщо просить більше.
+// А в попередній тасці вийшло, бо віджет Center передає дитині слабкі обмеження
 class TrainingExample16 extends StatelessWidget {
   const TrainingExample16({super.key});
   @override
@@ -474,21 +478,20 @@ class TrainingExample17 extends StatelessWidget {
   const TrainingExample17({super.key});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 250),
-            child: SizedBox(
-              width: 1000,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Press me'),
-              ),
-            ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: 250,
+          maxWidth: double.infinity,
+        ),
+        child: SizedBox(
+          width: 1000,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text('Press me'),
           ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -508,7 +511,18 @@ class TrainingExample18 extends StatelessWidget {
         color: Colors.blue,
         width: 200,
         height: 200,
-        child: Container(color: Colors.red, width: 50, height: 50),
+        // child: UnconstrainedBox(
+        //   alignment: Alignment.topLeft,
+        //   child: Container(color: Colors.red, width: 50, height: 50),
+        // ),
+        child: OverflowBox(
+          minWidth: 0,
+          minHeight: 0,
+          maxWidth: 300,
+          maxHeight: 300,
+          alignment: Alignment.center,
+          child: Container(color: Colors.red, width: 250, height: 50),
+        ),
       ),
     );
   }
@@ -529,7 +543,12 @@ class TrainingExample19 extends StatelessWidget {
         color: Colors.blue,
         width: 200,
         height: 200,
-        child: UnconstrainedBox(
+        child: OverflowBox(
+          minWidth: 0,
+          minHeight: 0,
+          maxWidth: 300,
+          maxHeight: 200,
+          alignment: Alignment.center,
           child: Container(color: Colors.green, width: 300, height: 100),
         ),
       ),
@@ -542,7 +561,10 @@ class TrainingExample19 extends StatelessWidget {
 // накладається на червоний, але не накладається на синій (він знаходиться під
 // синім контейнером). Відповідь запишіть в коментарі до коду нижче.
 
-/// Відповідь: ...
+/// Відповідь: порядок відмальовки визначається порядком віджетів у списку
+/// children. Спочатку малюється червоний, потім зелений, який через оверфлоу
+/// вилазить за межі та накриває червоний. Останнім малюється синій.
+/// Оскільки синій іде після зеленого, він малюється поверх нього.
 
 class TrainingExample20 extends StatelessWidget {
   const TrainingExample20({super.key});
@@ -573,7 +595,11 @@ class TrainingExample20 extends StatelessWidget {
 // На цьому прикладі розгляньте, чому в другому Column контейнер з зеленим
 // кольором не обмежується батьком LimitedBox.
 
-// Відповідь: ...
+// Відповідь: LimitedBox застосовує свої обмеження лише тоді,
+// коли він отримує необмежені розміри від батька. У другому
+// прикладі SizeBox передає жорстке обмеження (height 100 та width 100),
+// тому LimitedBox ігнорується. У 1-му прикладі Column передає необмежені
+// розміри, що дозволяє LimitedBox працювати.
 class TrainingExample21 extends StatelessWidget {
   const TrainingExample21({super.key});
   @override
@@ -616,7 +642,10 @@ class TrainingExample21 extends StatelessWidget {
 // Task 22:
 // Чому LimitedBox не впливає на розмір зеленого контейнера?
 
-// Відповідь: ...
+// Відповідь: LimitedBox не працює, тому що на верхньому рівні (корінь екрана)
+// Flutter передає жорсткі обмеження, які змушують віджет займати весь екран.
+// Оскільки обмеження вже визначені (bounded), LimitedBox не застосовує свій
+// maxHeight.
 class TrainingExample22 extends StatelessWidget {
   const TrainingExample22({super.key});
   @override
