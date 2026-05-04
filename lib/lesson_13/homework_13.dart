@@ -130,7 +130,9 @@ class TrainingExample3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.yellow,
-      child: Center(
+      child: Align(
+        // ignore: use_named_constants
+        alignment: const Alignment(1, -1),
         child: Container(color: Colors.green, width: 100, height: 100),
       ),
     );
