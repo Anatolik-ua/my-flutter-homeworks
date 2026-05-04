@@ -322,7 +322,7 @@ class TrainingExample11 extends StatelessWidget {
     return Center(
       child: Row(
         children: [
-          Expanded(child: Container(color: Colors.red, width: 80, height: 100)),
+          Container(color: Colors.red, width: 80, height: 100),
           Expanded(child: Container(color: Colors.green, height: 100)),
           Expanded(child: Container(color: Colors.blue, height: 100)),
         ],
@@ -348,19 +348,26 @@ class TrainingExample12 extends StatelessWidget {
   const TrainingExample12({super.key});
   @override
   Widget build(BuildContext context) {
-    const redContainerWidth = 100.0;
+    const redContainerWidth = 250.0;
 
-    return Row(
-      children: [
-        Container(
-          color: Colors.red,
-          height: 100,
-          width: redContainerWidth,
-          child: const Text('Hi'),
-        ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isRedFullWidth = redContainerWidth >= constraints.maxWidth;
 
-        Expanded(child: Container(color: Colors.green, height: 100)),
-      ],
+        return Row(
+          children: [
+            Container(
+              color: Colors.red,
+              height: 100,
+              width: isRedFullWidth ? constraints.maxWidth : redContainerWidth,
+              child: const Text('Hi'),
+            ),
+
+            if (!isRedFullWidth)
+              Expanded(child: Container(color: Colors.green, height: 100)),
+          ],
+        );
+      },
     );
   }
 }
@@ -376,12 +383,14 @@ class TrainingExample13 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 200,
+        width: 300,
         height: 50,
         color: Colors.amber,
-        child: const Text(
-          'Дуже довгий текст який не поміщається',
-          style: TextStyle(fontSize: 30),
+        child: const FittedBox(
+          child: Text(
+            'Дуже довгий текст який не поміщається',
+            style: TextStyle(fontSize: 30),
+          ),
         ),
       ),
     );
@@ -406,6 +415,7 @@ class TrainingExample14 extends StatelessWidget {
         height: 100,
         color: Colors.lightBlue.shade100,
         child: const FittedBox(
+          fit: BoxFit.scaleDown,
           child: Text('Flutter', style: TextStyle(fontSize: 30)),
         ),
       ),
@@ -424,7 +434,10 @@ class TrainingExample15 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(color: Colors.yellow, width: 50, height: 50),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: 200, minHeight: 200),
+        child: Container(color: Colors.yellow, width: 50, height: 50),
+      ),
     );
   }
 }
