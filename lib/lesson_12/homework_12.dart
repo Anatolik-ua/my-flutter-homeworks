@@ -43,9 +43,8 @@ class HomeworkTwelveScreen extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(24),
                 ),
                 boxShadow: [
                   BoxShadow(
