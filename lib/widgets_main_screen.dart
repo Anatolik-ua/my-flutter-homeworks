@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 class WidgetsScreen extends StatelessWidget {
@@ -19,22 +20,22 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'Homework 11',
               description: 'Віджети. Частина 1',
-              onTap: () => context.push('/widgets/hw11'),
+              onTap: () => context.goNamed(AppRouter.hw11),
             ),
             NavigationCard(
               title: 'Homework 11 - Interactive',
               description: 'Виніс окремо subtas 5 для інтерактивного завдання',
-              onTap: () => context.push('/widgets/hw11-interactive'),
+              onTap: () => context.goNamed(AppRouter.hw11Interactive),
             ),
             NavigationCard(
               title: 'Homework 12',
               description: 'Оцінка візиту до магазину',
-              onTap: () => context.push('/widgets/hw12'),
+              onTap: () => context.goNamed(AppRouter.hw12),
             ),
             NavigationCard(
               title: 'Homework 13',
               description: 'Розуміння обмежень у Flutter',
-              onTap: () => context.push('/widgets/hw13'),
+              onTap: () => context.goNamed(AppRouter.hw13),
             ),
           ],
         ),

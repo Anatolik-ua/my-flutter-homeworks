@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             FeatureCard(
               title: 'Widgets',
-              onTap: () => context.push('/widgets'),
+              onTap: () => context.goNamed(AppRouter.widgets),
             ),
           ],
         ),

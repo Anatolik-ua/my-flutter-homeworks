@@ -7,35 +7,47 @@ import 'package:flutter_lab/widgets_main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
+  static const String home = 'home';
+  static const String widgets = 'widgets';
+  static const String hw11 = 'hw11';
+  static const String hw11Interactive = 'hw11Interactive';
+  static const String hw12 = 'hw12';
+  static const String hw13 = 'hw13';
+
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
       GoRoute(
         path: '/',
+        name: home,
         builder: (context, state) => const HomeScreen(),
         routes: [
           GoRoute(
             path: 'widgets',
+            name: widgets,
             builder: (context, state) => const WidgetsScreen(),
             routes: [
               GoRoute(
-                path: ':hwId',
-                builder: (context, state) {
-                  final hwId = state.pathParameters['hwId'];
-
-                  switch (hwId) {
-                    case 'hw11':
-                      return const HomeworkElevenScreen();
-                    case 'hw11-interactive':
-                      return const HomeworkElevenInteractiveScreen();
-                    case 'hw12':
-                      return const HomeworkTwelveScreen();
-                    case 'hw13':
-                      return const WidgetConstrainsTrainingScreen();
-                    default:
-                      return const WidgetsScreen();
-                  }
-                },
+                path: 'hw11',
+                name: hw11,
+                builder: (context, state) => const HomeworkElevenScreen(),
+              ),
+              GoRoute(
+                path: 'hw11-interactive',
+                name: hw11Interactive,
+                builder: (context, state) =>
+                    const HomeworkElevenInteractiveScreen(),
+              ),
+              GoRoute(
+                path: 'hw12',
+                name: hw12,
+                builder: (context, state) => const HomeworkTwelveScreen(),
+              ),
+              GoRoute(
+                path: 'hw13',
+                name: hw13,
+                builder: (context, state) =>
+                    const WidgetConstrainsTrainingScreen(),
               ),
             ],
           ),
