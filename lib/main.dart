@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/navigation/app_router.dart';
 import 'package:flutter_lab/widgets_main_screen.dart';
 
 void main() {
@@ -10,8 +11,8 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
     );
   }
 }
