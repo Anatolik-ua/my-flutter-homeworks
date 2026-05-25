@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/lesson_11/homework_11_interactive_screen.dart';
-import 'package:flutter_lab/lesson_11/homework_11_screen.dart';
-import 'package:flutter_lab/lesson_12/homework_12.dart';
-import 'package:flutter_lab/lesson_13/homework_13.dart';
+import 'package:flutter_lab/navigation/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -22,42 +20,22 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'Homework 11',
               description: 'Віджети. Частина 1',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const HomeworkElevenScreen(),
-                ),
-              ),
+              onTap: () => context.goNamed(AppRouter.hw11),
             ),
             NavigationCard(
               title: 'Homework 11 - Interactive',
               description: 'Виніс окремо subtas 5 для інтерактивного завдання',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const HomeworkElevenInteractiveScreen(),
-                ),
-              ),
+              onTap: () => context.goNamed(AppRouter.hw11Interactive),
             ),
             NavigationCard(
               title: 'Homework 12',
               description: 'Оцінка візиту до магазину',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const HomeworkTwelveScreen(),
-                ),
-              ),
+              onTap: () => context.goNamed(AppRouter.hw12),
             ),
             NavigationCard(
               title: 'Homework 13',
               description: 'Розуміння обмежень у Flutter',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetConstrainsTrainingScreen(),
-                ),
-              ),
+              onTap: () => context.goNamed(AppRouter.hw13),
             ),
           ],
         ),
