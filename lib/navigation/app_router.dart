@@ -19,22 +19,23 @@ class AppRouter {
             builder: (context, state) => const WidgetsScreen(),
             routes: [
               GoRoute(
-                path: 'hw11', // адреса /widgets/hw11
-                builder: (context, state) => const HomeworkElevenScreen(),
-              ),
-              GoRoute(
-                path: 'hw11-interactive',
-                builder: (context, state) =>
-                    const HomeworkElevenInteractiveScreen(),
-              ),
-              GoRoute(
-                path: 'hw12',
-                builder: (context, state) => const HomeworkTwelveScreen(),
-              ),
-              GoRoute(
-                path: 'hw13',
-                builder: (context, state) =>
-                    const WidgetConstrainsTrainingScreen(),
+                path: ':hwId',
+                builder: (context, state) {
+                  final hwId = state.pathParameters['hwId'];
+
+                  switch (hwId) {
+                    case 'hw11':
+                      return const HomeworkElevenScreen();
+                    case 'hw11-interactive':
+                      return const HomeworkElevenInteractiveScreen();
+                    case 'hw12':
+                      return const HomeworkTwelveScreen();
+                    case 'hw13':
+                      return const WidgetConstrainsTrainingScreen();
+                    default:
+                      return const WidgetsScreen();
+                  }
+                },
               ),
             ],
           ),

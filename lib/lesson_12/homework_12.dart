@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeworkTwelveScreen extends StatelessWidget {
   const HomeworkTwelveScreen({super.key});
@@ -17,7 +18,7 @@ class HomeworkTwelveScreen extends StatelessWidget {
             bottom: 16,
           ),
           child: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => context.pop(),
             child: SvgPicture.asset('assets/images/leading-icon.svg'),
           ),
         ),
