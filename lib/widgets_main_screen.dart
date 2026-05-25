@@ -37,6 +37,11 @@ class WidgetsScreen extends StatelessWidget {
               description: 'Розуміння обмежень у Flutter',
               onTap: () => context.goNamed(AppRouter.hw13),
             ),
+            NavigationCard(
+              title: 'Homework 18',
+              description: 'State management',
+              onTap: () => context.goNamed(AppRouter.hw18),
+            ),
           ],
         ),
       ),
