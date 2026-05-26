@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CounterEvent {}
+sealed class CounterEvent {}
 
 class CounterIncrementPressed extends CounterEvent {}
 
