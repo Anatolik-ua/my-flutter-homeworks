@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
 
 class StateManagementBaseScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class StateManagementBaseScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Навігацію налаштуємо через goNamed у наступних кроках
-                context.goNamed('cubit_example');
+                context.goNamed(AppRouter.cubitExample);
               },
               child: const Padding(
                 padding: EdgeInsets.all(16.0),

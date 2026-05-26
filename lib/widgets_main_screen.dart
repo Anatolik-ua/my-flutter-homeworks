@@ -9,7 +9,7 @@ class WidgetsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Widgets'),
+        title: const Text('Homeworks'),
         backgroundColor: Colors.blue.shade100,
       ),
       body: SingleChildScrollView(
@@ -39,7 +39,7 @@ class WidgetsScreen extends StatelessWidget {
             ),
             NavigationCard(
               title: 'Homework 18',
-              description: 'State management',
+              description: 'Реалізація CounterApp за допомогою BloC та Cubit',
               onTap: () => context.goNamed(AppRouter.hw18),
             ),
           ],
