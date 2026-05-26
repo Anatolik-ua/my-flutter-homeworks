@@ -20,7 +20,6 @@ class StateManagementBaseScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                // Навігацію налаштуємо через goNamed у наступних кроках
                 context.goNamed(AppRouter.cubitExample);
               },
               child: const Padding(
@@ -31,7 +30,7 @@ class StateManagementBaseScreen extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                context.goNamed('bloc_example');
+                context.goNamed(AppRouter.blocExample);
               },
               child: const Padding(
                 padding: EdgeInsets.all(16.0),
