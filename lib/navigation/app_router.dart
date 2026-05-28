@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lab/lesson_11/homework_11_interactive_screen.dart';
 import 'package:flutter_lab/lesson_11/homework_11_screen.dart';
 import 'package:flutter_lab/lesson_12/homework_12.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_lab/lesson_13/homework_13.dart';
 import 'package:flutter_lab/lesson_18/homework_bloc/homework_bloc_screen.dart';
 import 'package:flutter_lab/lesson_18/homework_cubit/homework_cubit_screen.dart';
 import 'package:flutter_lab/lesson_18/state_management_base_screen.dart';
+import 'package:flutter_lab/lesson_19/bloc/rate_app_cubit.dart';
 import 'package:flutter_lab/lesson_19/screens/rate_app_screen.dart';
 import 'package:flutter_lab/main.dart';
 import 'package:flutter_lab/widgets_main_screen.dart';
@@ -21,6 +23,7 @@ class AppRouter {
   static const String hw19 = 'hw19';
   static const String cubitExample = 'cubit_example';
   static const String blocExample = 'bloc_example';
+  static final _rateAppCubit = RateAppCubit();
 
   static final router = GoRouter(
     initialLocation: '/',
@@ -77,7 +80,16 @@ class AppRouter {
               GoRoute(
                 path: 'hw19',
                 name: hw19,
-                builder: (context, state) => const RateAppScreen(),
+                builder: (context, state) {
+                  if (_rateAppCubit.state.status != RateAppStatus.success) {
+                    _rateAppCubit.resetRating();
+                  }
+
+                  return BlocProvider.value(
+                    value: _rateAppCubit,
+                    child: const RateAppScreen(),
+                  );
+                },
               ),
             ],
           ),
