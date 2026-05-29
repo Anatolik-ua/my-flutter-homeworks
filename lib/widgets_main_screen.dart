@@ -47,6 +47,11 @@ class WidgetsScreen extends StatelessWidget {
               description: 'Оцінка нашого додатку',
               onTap: () => context.goNamed(AppRouter.hw19),
             ),
+            NavigationCard(
+              title: 'Homework 21',
+              description: "Explicit анімація стрибка м'яча",
+              onTap: () => context.goNamed(AppRouter.hw21),
+            ),
           ],
         ),
       ),
