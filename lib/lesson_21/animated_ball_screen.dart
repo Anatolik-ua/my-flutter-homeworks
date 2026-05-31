@@ -1,5 +1,6 @@
-import 'dart:math' as math; // Імпортуємо math для використання константи pi
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/lesson_21/left_character_widget.dart';
 
 class AnimatedBallScreen extends StatefulWidget {
   const AnimatedBallScreen({super.key});
@@ -12,7 +13,7 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _ballAnimation;
-  late Animation<double> _rotationAnimation; // Додаємо анімацію обертання
+  late Animation<double> _rotationAnimation;
 
   bool _initialized = false;
 
@@ -30,8 +31,6 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
       duration: const Duration(milliseconds: 1600),
     );
 
-    // Налаштовуємо обертання: від 0 до 4 * pi (720 градусів)
-    // Curves.easeInOut забезпечує повільний старт, розгін в середині та сповільнення в кінці
     _rotationAnimation =
         Tween<double>(
           begin: 0.0,
@@ -55,14 +54,11 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
       final statusBar = media.padding.top;
       final appBar = AppBar().preferredSize.height;
 
-      // Верхня межа
       topPosition = statusBar + appBar + 20;
 
-      // Верх темної плашки
       groundPosition = screenHeight - 256 - ballSize;
 
       _ballAnimation = TweenSequence<double>([
-        // Політ вгору
         TweenSequenceItem(
           tween:
               Tween(
@@ -76,7 +72,6 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
           weight: 45,
         ),
 
-        // Падіння вниз з відскоком
         TweenSequenceItem(
           tween:
               Tween(
@@ -109,18 +104,29 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
+    final statusBar = media.padding.top;
+    final appBarHeight = AppBar().preferredSize.height;
+    final instructionTop = statusBar + appBarHeight + 40.0;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Animated Ball'),
+        title: const Text(
+          'Animated Ball',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         backgroundColor: const Color(0xFF0D1828),
         foregroundColor: Colors.white,
         elevation: 0,
       ),
       body: Stack(
         children: [
-          // Фон
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
@@ -136,7 +142,6 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
             ),
           ),
 
-          // Нижня плашка
           Positioned(
             bottom: 0,
             left: 0,
@@ -156,19 +161,66 @@ class _AnimatedBallScreenState extends State<AnimatedBallScreen>
             ),
           ),
 
-          // М'яч
+          Positioned(
+            top: instructionTop,
+            left: 0,
+            right: 0,
+            child: const IgnorePointer(
+              ignoring: true,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 50.0),
+                child: Center(
+                  child: Text(
+                    "Для старту анімації натисніть на м'ячик",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xFF67808F),
+                      fontSize: 22,
+                      fontFamily: 'Montserrat',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // персонаж
           if (_initialized)
             AnimatedBuilder(
-              // Слухаємо обидві анімації через базовий контролер
               animation: _controller,
               builder: (context, child) {
+                final screenWidth = MediaQuery.of(context).size.width;
+                final targetLeft =
+                    screenWidth - (screenWidth / 3) - (ballSize / 2);
+
+                return Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: LeftCharacterWidget(
+                    ballY: _ballAnimation.value,
+                    ballX: targetLeft,
+                  ),
+                );
+              },
+            ),
+
+          // мяч
+          if (_initialized)
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                final screenWidth = MediaQuery.of(context).size.width;
+
+                final targetLeft =
+                    screenWidth - (screenWidth / 3) - (ballSize / 2);
+
                 return Positioned(
                   top: _ballAnimation.value,
-                  left: MediaQuery.of(context).size.width / 2 - ballSize / 2,
+                  left: targetLeft,
                   child: GestureDetector(
                     onTap: _jump,
                     child: Transform.rotate(
-                      angle: _rotationAnimation.value, // Закручуємо м'яч
+                      angle: _rotationAnimation.value,
                       child: Container(
                         width: ballSize,
                         height: ballSize,
