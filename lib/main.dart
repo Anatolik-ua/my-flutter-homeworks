@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_lab/lesson_19/bloc/rate_app_cubit.dart';
 import 'package:flutter_lab/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,9 +13,12 @@ class FlutterWidgetsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
-      builder: (context, child) => child ?? const HomeScreen(),
+    return BlocProvider(
+      create: (context) => RateAppCubit(),
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        builder: (context, child) => child ?? const HomeScreen(),
+      ),
     );
   }
 }
