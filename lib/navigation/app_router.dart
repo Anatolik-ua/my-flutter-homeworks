@@ -6,6 +6,7 @@ import 'package:flutter_lab/lesson_18/homework_bloc/homework_bloc_screen.dart';
 import 'package:flutter_lab/lesson_18/homework_cubit/homework_cubit_screen.dart';
 import 'package:flutter_lab/lesson_18/state_management_base_screen.dart';
 import 'package:flutter_lab/lesson_19/screens/rate_app_screen.dart';
+import 'package:flutter_lab/lesson_21/animated_ball_screen.dart';
 import 'package:flutter_lab/main.dart';
 import 'package:flutter_lab/widgets_main_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +20,7 @@ class AppRouter {
   static const String hw13 = 'hw13';
   static const String hw18 = 'hw18';
   static const String hw19 = 'hw19';
+  static const String hw21 = 'hw21';
   static const String cubitExample = 'cubit_example';
   static const String blocExample = 'bloc_example';
 
@@ -79,6 +81,11 @@ class AppRouter {
                 name: AppRouter.hw19,
                 builder: (context, state) =>
                     const RateAppScreen(), // Просто чистий екран
+              ),
+              GoRoute(
+                path: 'hw21',
+                name: hw21,
+                builder: (context, state) => const AnimatedBallScreen(),
               ),
             ],
           ),
