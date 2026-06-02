@@ -42,6 +42,11 @@ class WidgetsScreen extends StatelessWidget {
               description: 'Реалізація CounterApp за допомогою BloC та Cubit',
               onTap: () => context.goNamed(AppRouter.hw18),
             ),
+            NavigationCard(
+              title: 'Homework 19',
+              description: 'Оцінка нашого додатку',
+              onTap: () => context.goNamed(AppRouter.hw19),
+            ),
           ],
         ),
       ),
