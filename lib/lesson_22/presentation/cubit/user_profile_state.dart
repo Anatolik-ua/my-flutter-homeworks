@@ -6,6 +6,10 @@ final class UserProfileLoading implements UserProfileState {}
 
 final class UserProfileLoaded implements UserProfileState {
   UserProfileLoaded(this.user);
-
   final UserEntity user;
+}
+
+final class UserProfileError implements UserProfileState {
+  UserProfileError({required this.message});
+  final String message;
 }

@@ -14,22 +14,25 @@ class UserProfileHomeworkScreen extends StatefulWidget {
 
 class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
   @override
+  void initState() {
+    super.initState();
+    context.read<UserProfileCubit>().loadUserProfile(shouldFail: true);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('User Profile Homework')),
       body: BlocBuilder<UserProfileCubit, UserProfileState>(
         builder: (context, state) {
           return switch (state) {
-            //Loading State
             UserProfileLoading() => const Center(
               child: CircularProgressIndicator(),
             ),
-
-            //Loaded State
             UserProfileLoaded() => _LoadedProfileWidget(user: state.user),
-
-            //Error State
-            // TODO(student): Need implement error state
+            UserProfileError() => _ErrorProfileWidget(
+              errorMessage: state.message,
+            ),
           };
         },
       ),
@@ -57,11 +60,7 @@ class _LoadedProfileWidget extends StatelessWidget {
                 const CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                    color: Colors.white,
-                  ),
+                  child: Icon(Icons.person, size: 50, color: Colors.white),
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -84,6 +83,64 @@ class _LoadedProfileWidget extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+// віджет для відображення інтерфейсу помилки
+class _ErrorProfileWidget extends StatelessWidget {
+  const _ErrorProfileWidget({required this.errorMessage});
+
+  final String errorMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.error_outline_rounded,
+              color: Colors.redAccent,
+              size: 80,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Упс! Щось пішло не так',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              errorMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+              ),
+              onPressed: () {
+                context.read<UserProfileCubit>().loadUserProfile(
+                  shouldFail: false,
+                );
+              },
+              icon: const Icon(Icons.refresh_rounded),
+              label: const Text(
+                'Спробувати знову',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
         ),
       ),
     );
